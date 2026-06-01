@@ -1,0 +1,21 @@
+# Build output folders — never commit these
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+.vs/
+
+# Rider IDE files
+.idea/
+*.DotSettings.user
+
+# Environment files
+.env
+appsettings.Development.json
+
+# OS files
+.DS_Store
+Thumbs.db
+.DS_Store
