@@ -1,0 +1,238 @@
+/* ─────────────────────────────────────────
+   Parts Management
+   Search & Add Part button live in the shared Topbar.
+   This file owns only the stats grid, table, and modal.
+───────────────────────────────────────── */
+
+.pm-page {
+  display: grid;
+  gap: 28px;
+  width: 100%;
+}
+
+/* ── Stat cards ── */
+.pm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.pm-stat-card {
+  min-height: 146px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: space-between;
+  align-items: start;
+  gap: 16px;
+  padding: 24px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+}
+
+.pm-stat-text {
+  display: contents;
+}
+
+.pm-stat-label {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.pm-stat-value {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  color: var(--color-primary);
+  font-size: 25px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.pm-stat-icon {
+  grid-column: 2;
+  grid-row: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.pm-stat-icon.blue   { background: #dbeafe; color: #2563eb; }
+.pm-stat-icon.green  { background: #dcfce7; color: #16a34a; }
+.pm-stat-icon.yellow { background: #fef3c7; color: #d97706; }
+.pm-stat-icon.purple { background: #ede9fe; color: #7c3aed; }
+
+/* ── Table card ── */
+.pm-table-card {
+  min-width: 0;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+  overflow: hidden;
+}
+
+.pm-table-wrapper {
+  overflow-x: auto;
+}
+
+.pm-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.pm-table th {
+  height: 54px;
+  padding: 0 24px;
+  text-align: left;
+  color: var(--color-text-secondary);
+  background: #f6f7fb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pm-table td {
+  height: 84px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+.pm-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pm-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Part info cell */
+.pm-part-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pm-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #14b8a6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.pm-part-name {
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.pm-part-sub {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  margin: 2px 0 0;
+}
+
+/* Badges */
+.pm-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.pm-badge.in-stock {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.pm-badge.low {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Action buttons */
+.pm-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pm-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: opacity 0.15s;
+}
+
+.pm-icon-btn:hover   { opacity: 0.8; }
+.pm-icon-btn.edit    { background: #dbeafe; color: #2563eb; }
+.pm-icon-btn.delete  { background: #fee2e2; color: #dc2626; }
+
+.pm-empty {
+  text-align: center;
+  padding: 48px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* ── Shared error text (used inside form-grid labels) ── */
+.pm-error {
+  color: #dc2626;
+  font-size: 0.78rem;
+}
+
+.pm-error {
+  color: #dc2626;
+  font-size: 0.78rem;
+}
+
+.pm-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .pm-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .pm-stats-grid          { grid-template-columns: 1fr; }
+  .pm-form-grid.two-col   { grid-template-columns: 1fr; }
+}

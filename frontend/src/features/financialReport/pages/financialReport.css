@@ -1,0 +1,360 @@
+/* financialReport.css
+   Uses variables from src/shared/styles/variables.css
+   ─────────────────────────────────────────────────── */
+
+/* ── Page ── */
+.fr-page {
+  width: 100%;
+  display: grid;
+  gap: 28px;
+  font-family: var(--font-sans);
+  animation: fr-fade-in 0.35s ease both;
+}
+
+@keyframes fr-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Loading ── */
+.fr-loading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 60px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+.fr-loading-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: fr-spin 0.75s linear infinite;
+}
+@keyframes fr-spin { to { transform: rotate(360deg); } }
+
+/* ── Filter row ── */
+.fr-filter-row {
+  display: flex;
+  justify-content: flex-end;
+}
+.fr-filter-group {
+  display: flex;
+  gap: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+}
+.fr-filter-btn {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  transition: background 0.15s, color 0.15s;
+}
+.fr-filter-btn.active {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.28);
+}
+.fr-filter-btn:not(.active):hover {
+  background: var(--accent-bg);
+  color: var(--primary);
+}
+
+/* ── KPI grid ── */
+.fr-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.fr-kpi-card {
+  min-height: 146px;
+  background: var(--card);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.fr-kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 8px 8px 0 0;
+}
+.fr-kpi--revenue::before  { background: var(--primary); }
+.fr-kpi--purchase::before { background: var(--error); }
+.fr-kpi--profit::before   { background: var(--success); }
+.fr-kpi--loss::before     { background: var(--error); }
+.fr-kpi--invoices::before { background: var(--warning); }
+
+.fr-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.fr-kpi-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fr-kpi--revenue  .fr-kpi-icon { background: var(--primary); }
+.fr-kpi--purchase .fr-kpi-icon { background: var(--error); }
+.fr-kpi--profit   .fr-kpi-icon { background: var(--success); }
+.fr-kpi--loss     .fr-kpi-icon { background: var(--error); }
+.fr-kpi--invoices .fr-kpi-icon { background: var(--warning); }
+
+.fr-kpi-body { flex: 1; }
+.fr-kpi-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.fr-kpi-value {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 6px 0 0;
+  letter-spacing: -0.4px;
+}
+.fr-positive { color: var(--success) !important; }
+.fr-negative { color: var(--error)   !important; }
+
+.fr-kpi-chip {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.fr-chip--up      { background: var(--success-bg);  color: var(--success);  border: 1px solid var(--success-border); }
+.fr-chip--down    { background: var(--error-bg);    color: var(--error);    border: 1px solid var(--error-border); }
+.fr-chip--neutral { background: var(--bg);          color: var(--muted);    border: 1px solid var(--border); }
+
+/* ── Main 2-column grid ── */
+.fr-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ── Card base ── */
+.fr-card {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+  border: 1px solid var(--border);
+}
+.fr-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.fr-card-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0 0 3px;
+}
+.fr-card-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+.fr-badge {
+  background: var(--accent-bg);
+  color: var(--primary);
+  border: 1px solid var(--accent-border);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+/* Chart wrappers */
+.fr-chart-wrap { height: 250px; position: relative; }
+
+/* Placement */
+.fr-card--trend { grid-column: 1 / 2; }
+.fr-card--bar   { grid-column: 2 / 3; }
+
+/* No data fallback */
+.fr-no-data {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  gap: 8px;
+  line-height: 1.6;
+}
+.fr-no-data code {
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+/* ── Metrics panel (2×2 grid) ── */
+.fr-metrics-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  grid-column: 1 / 2;
+}
+.fr-metric-box {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+  border: 1px solid var(--border);
+}
+.fr-metric-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+.fr-metric-value {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 800;
+  margin: 8px 0 6px;
+  letter-spacing: -0.4px;
+}
+.fr-metric-bar-track {
+  height: 5px;
+  background: var(--bg);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.fr-metric-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.55s ease;
+}
+.fr-metric-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── Doughnut ── */
+.fr-card--donut {
+  grid-column: 2 / 3;
+  position: relative;
+}
+.fr-donut-wrap {
+  height: 210px;
+  position: relative;
+}
+.fr-donut-center {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+.fr-donut-center span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.fr-donut-center strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-h);
+}
+
+/* ── Insight Banner ── */
+.fr-insight-banner {
+  border-radius: 8px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 14px;
+  line-height: 1.65;
+  border-left: 4px solid transparent;
+}
+.fr-insight--profit {
+  background: var(--success-bg);
+  border-color: var(--success);
+  color: #065f46;
+}
+.fr-insight--loss {
+  background: var(--error-bg);
+  border-color: var(--error);
+  color: #7f1d1d;
+}
+.fr-insight-banner svg {
+  font-size: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.fr-insight-banner strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.fr-insight-banner p { margin: 0; }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .fr-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 820px) {
+  .fr-main-grid { grid-template-columns: 1fr; }
+  .fr-card--trend,
+  .fr-card--bar,
+  .fr-metrics-panel,
+  .fr-card--donut { grid-column: 1 / 2; }
+  .fr-kpi-grid { grid-template-columns: 1fr 1fr; }
+}

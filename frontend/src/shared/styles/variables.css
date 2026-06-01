@@ -1,0 +1,70 @@
+/* ============================================================
+   VMS Design System — Color Palette
+   Import this in main.jsx:
+     import "./shared/styles/variables.css";
+   ============================================================ */
+
+:root {
+  /* ── Brand ─────────────────────────────────────────────── */
+  --primary: #1e3a8a; /* deep navy — headers, primary actions */
+  --primary-light: #2d4fa3; /* hover state for primary */
+  --secondary: #3b82f6; /* blue — secondary buttons, links */
+  --accent: #60a5fa; /* light blue — highlights, focus rings */
+
+  /* ── Surfaces ───────────────────────────────────────────── */
+  --bg: #f9fafb; /* page background */
+  --card: #ffffff; /* card / panel background */
+  --border: #e5e7eb; /* dividers, input borders */
+
+  /* ── Text ───────────────────────────────────────────────── */
+  --text-h: #111827; /* headings / primary text */
+  --text: #6b7280; /* body / secondary text */
+  --muted: #9ca3af; /* placeholders, captions */
+
+  /* ── Semantic ───────────────────────────────────────────── */
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.08);
+  --success-border: rgba(16, 185, 129, 0.25);
+
+  --warning: #f59e0b;
+  --warning-bg: rgba(245, 158, 11, 0.08);
+  --warning-border: rgba(245, 158, 11, 0.25);
+
+  --error: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.08);
+  --error-border: rgba(239, 68, 68, 0.25);
+
+  --info: #3b82f6;
+  --info-bg: rgba(59, 130, 246, 0.08);
+  --info-border: rgba(59, 130, 246, 0.25);
+
+  /* ── Extra Accents ──────────────────────────────────────── */
+  --teal: #14b8a6;
+  --teal-bg: rgba(20, 184, 166, 0.08);
+
+  --purple: #8b5cf6;
+  --purple-bg: rgba(139, 92, 246, 0.08);
+
+  --indigo: #6366f1;
+  --indigo-bg: rgba(99, 102, 241, 0.08);
+
+  /* ── Accent utilities ───────────────────────────────────── */
+  --accent-bg: rgba(96, 165, 250, 0.12);
+  --accent-border: rgba(96, 165, 250, 0.4);
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(30, 58, 138, 0.1), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg:
+    0 10px 30px rgba(30, 58, 138, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+
+  /* ── Radii ──────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-sans: "DM Sans", sans-serif;
+  --font-heading: "Sora", sans-serif;
+}

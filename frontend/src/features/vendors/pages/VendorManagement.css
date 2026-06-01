@@ -1,0 +1,233 @@
+/* ─────────────────────────────────────────
+   Vendor Management
+   Search & Add Vendor button live in the shared Topbar.
+   Modal uses App.css globals (modal-backdrop, modal, form-grid, etc.)
+───────────────────────────────────────── */
+
+.vm-page {
+  display: grid;
+  gap: 28px;
+  width: 100%;
+}
+
+/* ── Stat cards — label top, value below, icon right ── */
+.vm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.vm-stat-card {
+  min-height: 146px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: space-between;
+  align-items: start;
+  gap: 16px;
+  padding: 24px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+}
+
+.vm-stat-text {
+  display: contents;
+}
+
+.vm-stat-label {
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.vm-stat-value {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  color: var(--color-primary);
+  font-size: 25px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.vm-stat-icon {
+  grid-column: 2;
+  grid-row: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.vm-stat-icon.blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.vm-stat-icon.green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ── Table card ── */
+.vm-table-card {
+  min-width: 0;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.05);
+  overflow: hidden;
+}
+
+.vm-table-wrapper {
+  overflow-x: auto;
+}
+
+.vm-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.vm-table th {
+  height: 54px;
+  padding: 0 24px;
+  text-align: left;
+  color: var(--color-text-secondary);
+  background: #f6f7fb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vm-table td {
+  height: 84px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  vertical-align: middle;
+}
+
+.vm-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.vm-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Vendor info cell */
+.vm-vendor-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vm-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #14b8a6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.vm-vendor-name {
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.vm-vendor-sub {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  margin: 2px 0 0;
+}
+
+.vm-address-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563;
+}
+
+/* Badge */
+.vm-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.vm-badge.active {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* Action buttons */
+.vm-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.vm-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: opacity 0.15s;
+}
+
+.vm-icon-btn:hover {
+  opacity: 0.8;
+}
+.vm-icon-btn.edit {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.vm-icon-btn.delete {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.vm-empty {
+  text-align: center;
+  padding: 48px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .vm-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .vm-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
